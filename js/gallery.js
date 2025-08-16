@@ -89,3 +89,26 @@ const result = picturesTemplate(images);
 
 gallEl.insertAdjacentHTML('afterbegin', result);
 
+gallEl.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    if (e.currentTarget === e.target) {
+        return;
+    };
+
+    console.log(e.target.dataset.source)
+
+    const instance = basicLightbox.create(`
+            <img
+                width="1112"
+                height="640"
+                class="gallery-image"
+                src="${e.target.dataset.source}"
+                alt="${e.target.alt}"
+            />
+`)
+
+    instance.show()
+
+
+})
